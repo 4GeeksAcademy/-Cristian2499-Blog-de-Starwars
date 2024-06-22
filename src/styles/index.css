@@ -1,3 +1,63 @@
 /* 
     General Styles
 */
+
+.bg-custom {
+    background-image: url("https://www.solofondos.com/wp-content/uploads/2016/07/star-wars-spaceships-vehicles-1680x1050-wallpaper_www.wallpaperhi.com_58.jpg");
+    background-size: cover;
+    background-position: center;
+}
+
+.navbar {
+    margin: 20px;
+    border-radius: 16px;
+}
+
+.card {
+ 
+    border-radius: 1rem;
+    border: 1px solid transparent;
+    
+    backdrop-filter:  blur(1rem);
+    box-shadow: 1.3rem 1.3rem 1.3rem rgba(0, 0, 0, 0.5);
+
+}
+
+.cb1 {
+    background-color:  rgba(225, 225, 225, 0.1);
+}
+
+/*
+    Scrollbar design
+*/
+body::-webkit-scrollbar {
+    width: 12px;
+  }
+  body::-webkit-scrollbar-track {
+    background: rgb(6, 6, 6);
+    border-radius: 20px;
+  }
+  body::-webkit-scrollbar-thumb {
+    background-color: rgb(233, 9, 9);
+    border-radius: 20px;
+    border: 3px solid rgb(244, 244, 8);
+  }
+  /* Colores de barra internas */
+  div::-webkit-scrollbar {
+    width: 10px;
+  }
+  div::-webkit-scrollbar-track {
+    background: rgb(6,6,6);
+    border-radius: 20px;
+  }
+  div::-webkit-scrollbar-thumb {
+    background-color: rgb(233, 9, 9);
+    border-radius: 20px;
+    border: 3px solid rgb(244, 244, 8);
+  }
+
+
+
+
+
+

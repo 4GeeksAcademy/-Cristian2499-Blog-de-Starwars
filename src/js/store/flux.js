@@ -1,42 +1,50 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
-			demo: [
-				{
-					title: "FIRST",
-					background: "white",
-					initial: "white"
-				},
-				{
-					title: "SECOND",
-					background: "white",
-					initial: "white"
-				}
-			]
+			apiUrl: "https://swapi.dev/api",
+			people: [],
+			planets: [],
+			favorites: [],
 		},
 		actions: {
-			// Use getActions to call a function within a fuction
-			exampleFunction: () => {
-				getActions().changeColor(0, "green");
-			},
-			loadSomeData: () => {
-				/**
-					fetch().then().then(data => setStore({ "foo": data.bar }))
-				*/
-			},
-			changeColor: (index, color) => {
-				//get the store
+			getInfoPeople: async () => {
 				const store = getStore();
+				try {
+					const response = await fetch(`${store.apiUrl}/people`)
+					if (!response.ok) {
+						throw new Error("there has been an error");
+					}
+					const data = await response.json();
+					setStore({ people: data.results })
+				} catch (error) {
+					console.log(error);
+				}
+			},
 
-				//we have to loop the entire demo array to look for the respective index
-				//and change its color
-				const demo = store.demo.map((elm, i) => {
-					if (i === index) elm.background = color;
-					return elm;
-				});
+			getInfoPlanets: async () => {
+				const store = getStore();
+				try {
+					const response = await fetch(`${store.apiUrl}/planets`)
+					if (!response.ok) {
+						throw new Error("there has been an error");
+					}
+					const data = await response.json();
+					setStore({planets: data.results})
+				} catch (error) {
+					console.log(error);
+				}
+			},
 
-				//reset the global store
-				setStore({ demo: demo });
+			addFavorites: (id, name) => {
+				const store = getStore();
+				console.log(id,name)
+				setStore({favorites:[...store.favorites, {id,name}]})
+			},
+
+			deleteFavorite: (result) => {
+				const store = getStore();
+				const remove = store.favorites.filter((favorite) => favorite.name !== result.name)
+				setStore({favorites:remove})
 			}
 		}
 	};
